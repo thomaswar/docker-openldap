@@ -1,0 +1,23 @@
+dn: dc=at
+objectClass: domain
+dc: at
+
+dn: dc=wpv, dc=at
+objectClass: domain
+dc: wpv
+
+dn: gln=9110017333914, dc=wpv, dc=at
+objectClass: wpvOrganization
+o: Identinetics IT-Services GmbH
+gln: 9110017333914
+
+dn: uid=tester@testinetics.at, gln=9110017333914, dc=wpv, dc=at
+objectClass: wpvOrgPerson
+displayName: User, Test
+cn: Test User
+givenName: Test
+sn: User
+uid: tester@testinetics.at
+gid: tester@testinetics.at
+mail: tester@testinetics.at
+
