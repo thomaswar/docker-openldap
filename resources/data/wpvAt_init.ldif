@@ -11,13 +11,22 @@ objectClass: wpvOrganization
 o: Identinetics IT-Services GmbH
 gln: 9110017333914
 
-dn: uid=tester@testinetics.at, gln=9110017333914, dc=wpv, dc=at
+dn: uid=tester@testinetics.at,gln=9110017333914,dc=wpv,dc=at
 objectClass: wpvOrgPerson
-displayName: User, Test
 cn: Test User
+displayName: User, Test
 givenName: Test
-sn: User
+gln: 9110017333914
+localityName: Tulln
 uid: tester@testinetics.at
 gid: tester@testinetics.at
 mail: tester@testinetics.at
-
+o: Identinetics IT-Services GmbH
+orgSourcePin:
+postalCode: 3430
+postalAddress:: TW96YXJ0c3RyLiAxLzQgJCAzNDMwIFR1bGxuICQgw5ZzdGVycmVpY2g=
+rights: Administrator
+street: Mozartstr. 1/4
+sn: User
+telephoneNumber: +43 1 2345 6778 90
+title: BSc
