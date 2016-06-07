@@ -16,9 +16,9 @@ RUN yum -y install openldap openldap-servers openldap-clients
 RUN mkdir -p /opt/sample_data/etc/openldap/conf/schema/ \
  && mkdir -p /opt/sample_data/etc/openldap/data/ \
  && cp -pr /etc/openldap/* /opt/sample_data/etc/openldap/conf/
-COPY resources/conf/*.conf /opt/sample_data/etc/openldap/conf/
-COPY resources/conf/schema/* /opt/sample_data/etc/openldap/conf/schema/
-COPY resources/data/* /opt/sample_data/etc/openldap/data/
+COPY install/conf/*.conf /opt/sample_data/etc/openldap/conf/
+COPY install/conf/schema/* /opt/sample_data/etc/openldap/conf/schema/
+COPY install/data/* /opt/sample_data/etc/openldap/data/
 
 ARG USERNAME
 RUN usermod -l $USERNAME $USERNAME_DEFAULT \
@@ -32,6 +32,6 @@ RUN cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 # set config for client (for test purposes) : BASE, URL
 
 ARG SLAPDPORT
-COPY resources/scripts/* /
+COPY install/scripts/* /
 RUN chmod +x /*.sh
 CMD /start.sh
