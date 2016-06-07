@@ -8,6 +8,6 @@ ldapadd -h localhost -p $SLAPDPORT \
 
 ldappasswd -h localhost -p $SLAPDPORT \
     -x -D cn=admin,dc=at -w $ROOTPW \
-    -s 'test' \
+    -s 'test' -c \
     'uid=tester@testinetics.at, dc=edu, dc=at'
 
