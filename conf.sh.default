@@ -21,7 +21,7 @@ export ENVSETTINGS="
 "
 export NETWORKSETTINGS="
     --log-driver=syslog --log-opt syslog-facility=daemon --log-opt syslog-tag=slapd
-    --net http_proxy
+    --net dockernet
     --ip 10.1.1.${IMGID}
 "
 export VOLROOT="${dockervol_root}/$CONTAINERNAME"  # container volumes on docker host
