@@ -31,7 +31,7 @@ RUN cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 
 # set config for client (for test purposes) : BASE, URL
 
-COPY resources/scripts/* /scripts/
 ARG SLAPDPORT
-RUN chmod +x /scripts/*.sh
-CMD /scripts/start.sh
+COPY resources/scripts/* /
+RUN chmod +x /*.sh
+CMD /start.sh
