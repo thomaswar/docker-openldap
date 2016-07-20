@@ -4,11 +4,11 @@
 dockervol_root='/docker_volumes'
 
 # configure container
-export IMGID='6'  # range from 2 .. 99; must be unique
+export IMGID='06'  # range from 02 .. 99; must be unique
 export IMAGENAME="r2h2/openldap${IMGID}"
 export CONTAINERNAME="${IMGID}openldap"
 export CONTAINERUSER="slapd${IMGID}"   # group and user to run container
-export CONTAINERUID="800${IMGID}"   # gid and uid for CONTAINERUSER
+export CONTAINERUID="80${IMGID}"   # gid and uid for CONTAINERUSER
 export SLAPDPORT=8389
 export BUILDARGS="
     --build-arg SLAPDPORT=$SLAPDPORT \
