@@ -15,7 +15,7 @@ cn: HAK Tulln
 dn: uid=test.user1234567, dc=schule, dc=at
 objectClass: inetOrgPerson
 objectClass: eduAtPerson
-gvBpk: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
+gvbPK: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
 cn: Test User
 givenName: Test
 sn: User
