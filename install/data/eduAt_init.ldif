@@ -2,29 +2,28 @@ dn: dc=at
 objectClass: domain
 dc: at
 
-dn: dc=edu, dc=at
+dn: dc=schule, dc=at
 objectClass: domain
-dc: edu
+dc: schule
 
-#dn: gln=9110017333914, dc=edu, dc=at
-#objectClass: eduOrganization
-#o: Identinetics IT-Services GmbH
-#gln: 9110017333914
+dn: o=321418, dc=schule, dc=at
+objectClass: Organization
+objectClass: eduOrg
+o: 321418
+cn: HAK Tulln
 
-dn: uid=tester@testinetics.at,dc=edu,dc=at
-objectClass: eduOrgPerson
+dn: uid=test.user1234567, dc=schule, dc=at
+objectClass: inetOrgPerson
+objectClass: eduAtPerson
 cn: Test User
-displayName: User, Test
 givenName: Test
-localityName: Tulln
-uid: tester@testinetics.at
-gid: tester@testinetics.at
-mail: tester@testinetics.at
-o: Identinetics IT-Services GmbH
-postalCode: 3430
-postalAddress:: TW96YXJ0c3RyLiAxLzQgJCAzNDMwIFR1bGxuICQgw5ZzdGVycmVpY2g=
-rights: Administrator
-street: Mozartstr. 1/4
 sn: User
-telephoneNumber: +43 1 2345 6778 90
-title: Ing.
+gender: 9
+uid: test.user1234567
+mail: test.user123456@schule.at
+o: 321418
+ou: 4BK
+postalAddress:: TW96YXJ0c3RyLiAxLzQgJCAzNDMwIFR1bGxuICQgw5ZzdGVycmVpY2g=
+eduPersonScopedAffiliation: Lehrer
+rights: CMS-XYZ
+
