@@ -18,12 +18,12 @@ objectClass: eduAtPerson
 cn: Test User
 givenName: Test
 sn: User
-gender: 9
+schacGender: 9
 uid: test.user1234567
 mail: test.user123456@schule.at
 o: 321418
 ou: 4BK
 postalAddress:: TW96YXJ0c3RyLiAxLzQgJCAzNDMwIFR1bGxuICQgw5ZzdGVycmVpY2g=
 eduPersonScopedAffiliation: Lehrer
-rights: CMS-XYZ
+gvRights: CMS-XYZ
 

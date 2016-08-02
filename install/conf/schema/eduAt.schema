@@ -8,4 +8,4 @@ objectClass ( 1.2.40.0.10.2.1.0.901
     NAME 'eduAtPerson'
  	AUXILIARY
 	MUST ( o $ eduPersonScopedAffiliation )
-	MAY ( gender $ ou $ rights ) )
+	MAY ( schacGender $ ou $ gvRights ) )
