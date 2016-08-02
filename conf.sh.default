@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# extended rhoerbe/docker-template@github 2016-07-11
 
 dockervol_root='/docker_volumes'
 
@@ -34,7 +33,6 @@ export VOLMAPPING="
 export STARTCMD='/start.sh'
 
 # first create user/group/host directories if not existing
-# first start: create user/group/host directories
 if [ $(id -u) -ne 0 ]; then
     sudo="sudo"
 fi
