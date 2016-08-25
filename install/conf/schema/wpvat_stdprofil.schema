@@ -1,22 +1,7 @@
-#
-attributetype ( 1.2.40.0.10.2.1.1.1 NAME 'gid'
-	DESC 'ldap.gv.at Global Identifier'
-	EQUALITY caseIgnoreMatch
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-	SINGLE-VALUE )
+# gid, rights, wbpkhash defined in extended ldap.gv.at schema (alias names)
 
 attributetype ( 1.3.88 NAME 'gln'
 	DESC 'Global Location Number (GS1)'
-	EQUALITY caseExactMatch
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
-
-attributetype ( 1.2.40.0.10.2.1.1.21 NAME 'rights'
-	DESC 'ldap.gv.at Attribute'
-	EQUALITY caseIgnoreMatch
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
-
-attributetype ( 1.2.40.0.10.2.1.1.149 NAME 'wbpkHash'
-	DESC 'ldap.gv.at Attribute'
 	EQUALITY caseExactMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 
