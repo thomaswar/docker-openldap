@@ -14,11 +14,8 @@ before_script:
   - cd dscripts && git checkout master && cd ..
   - cp conf.sh.travis conf.sh
   - dscripts/build.sh -u
-  - docker images
 
 script:
-  - echo "start tests"
-  - docker images
   - dscripts/run.sh -ip /init_sample_config.sh
   - dscripts/run.sh -ip /init_sample_eduAt.sh
   - dscripts/run.sh -ip /dump_testuser.sh  # very basic test -> extend

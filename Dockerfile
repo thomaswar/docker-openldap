@@ -19,5 +19,7 @@ COPY install/scripts/* /
 RUN chmod +x /*.sh
 VOLUME /etc/openldap/
 VOLUME /var/log/
+ARG SLAPDPORT
+ENV $SLAPDPORT
 USER ldap
 CMD /start.sh
