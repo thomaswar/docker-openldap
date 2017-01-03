@@ -1,7 +1,7 @@
 #
 # rhoerbe 2016-08-25: added WPV alias names 'gid', 'wbpkhash', 'rights'
 
-attributetype ( 1.2.40.0.10.2.1.1.1 NAME 'gvGid'
+attributetype ( 1.2.40.0.10.2.1.1.1 NAME ('gvGid' 'gid')
 	DESC 'ldap.gv.at Attribute'
 	EQUALITY caseIgnoreMatch
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
