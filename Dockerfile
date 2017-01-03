@@ -20,6 +20,6 @@ RUN chmod +x /*.sh
 VOLUME /etc/openldap/
 VOLUME /var/log/
 ARG SLAPDPORT
-ENV $SLAPDPORT
+ENV SLAPDPORT $SLAPDPORT
 USER ldap
 CMD /start.sh
