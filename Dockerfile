@@ -12,8 +12,8 @@ RUN mkdir -p /opt/sample_data/etc/openldap/conf/schema/ \
 COPY install/conf/*.conf /opt/sample_data/etc/openldap/conf/
 COPY install/conf/schema/* /opt/sample_data/etc/openldap/conf/schema/
 COPY install/data/* /opt/sample_data/etc/openldap/data/
-
-RUN cp -p /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+RUN chown -R ldap:ldap /etc/openldap /opt/sample_data \
+ && cp -p /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
 
 COPY install/scripts/* /
 RUN chmod +x /*.sh
