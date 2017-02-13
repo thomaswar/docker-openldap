@@ -21,8 +21,12 @@ main() {
 
 
 set_volume_root() {
-    export DOCKERVOL_ROOT='/docker_volumes'
-    export DOCKERLOG_ROOT='/dl'
+    DOCKERVOL_ROOT='/docker_volumes'
+    DOCKERLOG_ROOT='/dl'
+    if [ "$TRAVIS" == "true" ]; then
+        DOCKERVOL_ROOT='./dv';
+        DOCKERLOG_ROOT='./dl';
+    fi
 }
 
 
