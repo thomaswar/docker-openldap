@@ -1,7 +1,8 @@
 # OpenLDAP docker image based on centos7     
 
-The image produces immutable containers, i.e. a container can be removed and re-created
-any time without loss of data, because data is stored on mounted volumes.
+The image produces immutable containers, i.e. data volumes are outside the
+containers COW file system. A container can be removed and re-created
+any time without loss of data, because data is stored on data volumes.
 
 ## Configuration
 

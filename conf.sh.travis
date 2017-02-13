@@ -13,7 +13,7 @@ main() {
     set_buildargs
     set_run_args
     set_network
-    set_vol_mapping
+    #set_vol_mapping
     #enable_x11_client
     #enablet_pkcs11
     #enable_sshd()     # usually used only for debugging - requires installed sshd in image
@@ -48,11 +48,7 @@ set_buildargs() {
 
 
 set_run_args() {
-    export ENVSETTINGS="
-        -e SLAPDPORT=$SLAPDPORT
-        -e ROOTPW=changeit
-        -e USERNAME=slapd
-    "
+    export ENVSETTINGS="-e ROOTPW=changeit"   # -> slapdpasswd
     export STARTCMD='/start.sh'  # unset or blank to use image default
 }
 
@@ -69,17 +65,17 @@ set_network() {
     export NETWORKSETTINGS="
         --net $NETWORK
         --ip 10.1.1.${IMGID}
-        -p 8080:8080
     "
 }
 
 
 set_vol_mapping() {
-    create_user $CONTAINERUSER $CONTAINERUID
-
-    export VOLROOT="${DOCKERVOL_ROOT}/$CONTAINERNAME"  # container volumes on docker host
-    map_volume "$VOLROOT/etc/openldap/" '/etc/openldap/' 'Z'
-    map_volume "$DOCKERLOG_ROOT/var/log/" '/var/log/' 'Z'
+    docker volume create --name openldap.db
+    docker volume create --name openldap.etc
+    docker volume create --name openldap.log
+    map_docker_volume "openldap.db" '/var/db' 'Z'
+    map_docker_volume "openldap.etc" '/etc/openldap' 'Z'
+    map_docker_volume "openldap.log" '/var/log/openldap' 'Z'
 }
 
 
