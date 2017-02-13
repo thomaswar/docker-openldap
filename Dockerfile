@@ -1,37 +1,34 @@
 FROM  centos:centos7
-MAINTAINER Rainer Hörbe r2h2@hoerbe.at
+      version="0.4.0" \
+      capabilites='--cap-drop=all'   # bind on port > 1024
 
-RUN yum -y install curl iproute lsof net-tools
+ENV UID 343006
+ENV GID 0
+RUN useradd --gid $GID --uid $UID ldap \
+ && chown $UID:$GID /run
 
-# need to map ldap uid to docker host - prevent creation by rpm install; later change it to $USERNAME
-ENV USERNAME_DEFAULT ldap
-ARG UID
-RUN groupadd --gid $UID $USERNAME_DEFAULT \
- && useradd --gid $UID --uid $UID $USERNAME_DEFAULT \
- && chown $USERNAME_DEFAULT:$USERNAME_DEFAULT /run
-
-RUN yum -y install openldap openldap-servers openldap-clients
+RUN yum -y install curl iproute lsof net-tools \
+ && yum -y install openldap openldap-servers openldap-clients \
+ && yum clean all
 
 # save system default ldap config and extend it with project-specific files
-RUN mkdir -p /opt/sample_data/etc/openldap/conf/schema/ \
- && mkdir -p /opt/sample_data/etc/openldap/data/ \
- && cp -pr /etc/openldap/* /opt/sample_data/etc/openldap/conf/
-COPY install/conf/*.conf /opt/sample_data/etc/openldap/conf/
-COPY install/conf/schema/* /opt/sample_data/etc/openldap/conf/schema/
+RUN mkdir -p /opt/sample_data/etc/openldap/data/
+COPY install/conf/*.conf /etc/openldap/
+COPY install/conf/schema/* /etc/openldap/schema/
 COPY install/data/* /opt/sample_data/etc/openldap/data/
-
-ARG USERNAME
-RUN usermod -l $USERNAME $USERNAME_DEFAULT \
- && groupmod -n $USERNAME $USERNAME_DEFAULT
- #&& chown -R $USERNAME:$USERNAME /opt/sample_data/etc/openldap/slapd.* \
- #&& chmod -R 750 /opt/sample_data/etc/openldap/slapd.*
-
-RUN cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
-# RUN chown $USERNAME:$USERNAME /var/lib/ldap/DB_CONFIG
-
-# set config for client (for test purposes) : BASE, URL
-
-ARG SLAPDPORT
+COPY install/conf/DB_CONFIG /var/db/
 COPY install/scripts/* /
-RUN chmod +x /*.sh
+
+# using the shared grop method from https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html (Support Arbitrary User IDs)
+RUN chown -R ldap:root /etc/openldap /opt/sample_data /var/db /var/log/openldap \
+ && chmod +x /*.sh
+
+ARG SLAPDPORT 8389
+ENV SLAPDPORT $SLAPDPORT
+
+VOLUME /etc/openldap/ \
+       /var/db/ \
+       /var/log/openldap
+
+USER ldap
 CMD /start.sh
