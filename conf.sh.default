@@ -21,18 +21,18 @@ main() {
 
 
 set_volume_root() {
-    DOCKERVOL_ROOT='/docker_volumes'
-    DOCKERLOG_ROOT='/dl'
-    SHAREDDATA_ROOT="${DOCKERVOL_ROOT}/01shared_data"    # data shared between containers
+    export DOCKERVOL_ROOT='/docker_volumes'
+    export DOCKERLOG_ROOT='/dl'
 }
 
 
 set_image_and_container_name() {
     # This IMGID qualifies image, container, user and IP adddress; this is helpful for managing
+    IMGID='06'
     # processes on the docker host etc.
     PROJSHORT='openldap'
     export IMAGENAME="rhoerbe/$PROJSHORT"  # [a-z_0-9]
-    export CONTAINERNAME="$PROJSHORT"
+    export CONTAINERNAME="${IMGID}$PROJSHORT"
 }
 
 
@@ -73,12 +73,9 @@ set_network() {
 
 
 set_vol_mapping() {
-    docker volume create --name openldap.db
-    docker volume create --name openldap.etc
-    docker volume create --name openldap.log
-    map_docker_volume "openldap.db" '/var/db' 'Z'
-    map_docker_volume "openldap.etc" '/etc/openldap' 'Z'
-    map_docker_volume "openldap.log" '/var/log/openldap' 'Z'
+    map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_ROOT
+    map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_ROOT
+    map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' DOCKERLOG_ROOT
 }
 
 

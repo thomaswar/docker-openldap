@@ -23,7 +23,7 @@ objectClass ( 1.2.40.0.10.2.1.0.901 NAME 'wpvOrgPerson'
 	SUP inetOrgPerson
 	STRUCTURAL
 	MUST ( gid $ gn $ sn )
-	MAY ( rights $ wbpkHash $ gln $ locality $ organizationName $ orgSourcePin ) )
+	MAY ( rights $ wbpkHash $ gln $ localityName $ organizationName $ orgSourcePin ) )
 
 
 
