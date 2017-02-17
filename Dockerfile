@@ -34,3 +34,7 @@ VOLUME /etc/openldap/ \
 
 USER ldap
 CMD /start.sh
+
+VOLUME /etc/openldap \
+       /var/db \
+       /var/log/openldap
