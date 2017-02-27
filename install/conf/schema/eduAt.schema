@@ -2,9 +2,9 @@
 # TODO need to define own OIS space ---
 
 # eduAtPerson objectclass definition
-# designed to extend inetOrgPerson to complete a edushare user
+# designed to extend inetOrgPerson to complete an edushare user
 
-objectClass ( 1.2.40.0.10.2.1.0.901
+objectClass ( 1.2.40.0.10.2.1.0.901.1
     NAME 'eduAtPerson'
  	AUXILIARY
 	MUST ( o $ eduPersonScopedAffiliation )
