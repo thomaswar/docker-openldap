@@ -52,7 +52,7 @@ cn:: QWRhbSBCw6Rja2VyCg==
 givenName: Adam
 #sn: Bäcker
 sn:: QsOkY2tlcgo=
-schacGender: 9
+schacGender: 1
 uid: test.user2_adam
 mail: adam.baecker@lms.at
 o: km-testskz
@@ -71,7 +71,7 @@ cn:: RXZhIFNjaMO8w59sZXItQsOkY2tlcgo=
 givenName: Eva
 #sn: Schüßler-Bäcker
 sn:: U2Now7zDn2xlci1Cw6Rja2VyCg==
-schacGender: 9
+schacGender: 2
 uid: test.user3_eva
 mail: eva.schuessler@lms.at 
 o: km-testskz
@@ -91,7 +91,7 @@ cn:: QmVydGEgQ2hhbcOkbGVvbiBLb2FsYQo=
 givenName: Berta
 #sn: Chamäleon Koala
 sn:: Q2hhbcOkbGVvbiBLb2FsYQo=
-schacGender: 9
+schacGender: 2
 uid: test.user4_berta
 mail: B.Cham@lms.at  
 o: km-testskz
