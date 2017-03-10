@@ -7,5 +7,5 @@
 objectClass ( 1.2.40.0.10.2.1.0.901.1
     NAME 'eduAtPerson'
  	AUXILIARY
-	MUST ( o $ eduPersonScopedAffiliation )
+	MUST ( o $ eduPersonScopedAffiliation $gvGid )
 	MAY ( gvbPK $ schacGender $ ou $ gvRights ) )
