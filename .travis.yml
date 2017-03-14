@@ -16,11 +16,12 @@ before_script:
   - dscripts/build.sh -u
 
 script:
+  - dscripts/run.sh
   - dscripts/run.sh -ip /init_sample_config.sh
-  - dscripts/run.sh -ip /init_sample_eduAt.sh
+  - dscripts/run.sh -ip /init_sample_data_eduAt.sh
   - dscripts/run.sh -ip /dump_testuser.sh  # very basic test -> extend
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" || travis_terminate $?;
-  - docker push $IMAGENAME; || travis_terminate $?;
-  - echo "pushed $IMAGENAME to docker hub";
+#  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" || travis_terminate $?;
+#  - docker push $IMAGENAME; || travis_terminate $?;
+#  - echo "pushed $IMAGENAME to docker hub";
