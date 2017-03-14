@@ -1,6 +1,6 @@
 FROM  centos:centos7
 LABEL version="0.4.0" \
-      capabilites='--cap-drop=all'
+      capabilites='--cap-drop=all --cap-add=setgid --cap-add-setuid'
 
 ENV UID 343006
 ENV GID 0
@@ -32,5 +32,4 @@ VOLUME /etc/openldap/ \
        /var/db/ \
        /var/log/openldap
 
-USER ldap
 CMD /start.sh

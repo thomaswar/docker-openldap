@@ -41,7 +41,7 @@ set_image_and_container_name() {
 
 
 set_users() {
-    export START_AS_ROOT=''      # 'True' (e.g. for apache to fall back to www user)
+    export START_AS_ROOT='True'      # 'True' (e.g. for apache to fall back to www user)
 }
 
 
