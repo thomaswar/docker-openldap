@@ -55,6 +55,7 @@ set_run_args() {
     export ENVSETTINGS="
         -e ROOTPW=changeit
         -e USERNAME=slapd
+        -e SLAPDHOST=0.0.0.0
     "
     export STARTCMD='/start.sh'  # unset or blank to use image default
 }

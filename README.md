@@ -6,7 +6,7 @@ any time without loss of data, because data is stored on data volumes.
 
 ## Configuration
 
-1. Clone this repository
+1. Clone this repository and change into the directory 
 2. Copy conf.sh.default to conf.sh
 3. Run `git submodule init` and `git submodule update`
 4. Modify conf.sh

@@ -1,0 +1,14 @@
+= Configuring Redundant OpenLDAP
+
+- Use a common global configuration
+  ** Either store it in LDAP, or
+  ** Distribute a static configuration: include slapd_repl.conf in slapd.conf
+- The configuration includes the list of servers
+
+    serverID  1 URI1
+    serverID  2 URI2
+    serverID  3 URI3
+
+One of the URIs must exactly math the -h directive of the slaps startup command. This way the
+daemon knows how to exclude itself form the repliaction.
+-
