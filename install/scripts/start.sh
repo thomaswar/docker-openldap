@@ -2,7 +2,8 @@
 
 # add SLAPDHOST to /etc/hosts
 [ -z $SLAPDHOST ] && echo 'SLAPDHOST not set' && exit 1
-sed -e "s/$HOSTNAME\$/$HOSTNAME $SLAPDHOST/" /etc/hosts
+cp /etc/hosts /tmp/hosts
+sed -e "s/$HOSTNAME\$/$HOSTNAME $SLAPDHOST/" /tmp/hosts > /etc/hosts
 
 exec slapd -4 -h "ldap://$SLAPDHOST:$SLAPDPORT/" \
     -d conns,config,stats,shell,trace \

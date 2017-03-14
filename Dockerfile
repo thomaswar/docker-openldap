@@ -27,10 +27,7 @@ ENV SLAPDPORT $SLAPDPORT
 RUN mkdir -p /var/log/openldap \
  && chown -R ldap:root /etc/openldap /var/db /var/log/openldap /opt/sample_data \
  && chmod 600 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
- && chmod 700 $(find   /etc/openldap /var/db /var/log/openldap -type d) \
- && chgrp ldap /etc/hosts \
- && chmod g+w /etc/hosts
-
+ && chmod 700 $(find   /etc/openldap /var/db /var/log/openldap -type d)
 VOLUME /etc/openldap/ \
        /var/db/ \
        /var/log/openldap
