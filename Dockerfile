@@ -1,6 +1,6 @@
 FROM  centos:centos7
 LABEL version="0.4.0" \
-      capabilites='--cap-drop=all --cap-add=setgid --cap-add=setuid'
+      capabilites='--cap-drop=all --cap-add=setgid --cap-add=                                                                                                                       ADD   ADD     setuid'
 
 ENV UID 343006
 ENV GID 0
