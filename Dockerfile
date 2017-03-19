@@ -1,5 +1,6 @@
 FROM  centos:centos7
 LABEL version="0.5.0" \
+      didi_dir="https://raw.githubusercontent.com/identinetics/docker-openldap/master/didi" \
       capabilities='--cap-drop=all --cap-add=setgid --cap-add=setuid'
 
 ENV UID 343006

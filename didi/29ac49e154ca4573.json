@@ -1,8 +1,8 @@
 {
-    "FormatVersion": 1,
+    "FormatVersion": 1, 
     "RepoDigests": [
         "rhoerbe/openldap@sha256:29ac49e154ca4573edacde0c97fa85fb38c74527744ede09146f058c11f3dd10"
-    ],
+    ], 
     "RepoTags": [
         "rhoerbe/openldap:latest"
     ]
