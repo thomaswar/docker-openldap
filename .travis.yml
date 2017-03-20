@@ -16,7 +16,7 @@ before_script:
   - dscripts/build.sh -u
 
 script:
-  - dscripts/run.sh -V
+  - dscripts/run.sh -ipV  # will hang
   - dscripts/exec.sh -p /init_sample_config.sh
   - dscripts/exec.sh -p /init_sample_data_eduAt.sh
   - dscripts/exec.sh -p /dump_testuser.sh  # very basic test -> extend
