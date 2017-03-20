@@ -11,7 +11,7 @@ services:
 
 before_script:
   # git submodule init && git submodule update  # done automaticall by travis
-  - cd dscripts && git checkout master && cd ..
+  - cd dscripts && git checkout master && git pull && cd ..
   - cp conf.sh.default conf.sh
   - dscripts/build.sh -u
 
