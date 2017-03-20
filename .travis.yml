@@ -16,10 +16,10 @@ before_script:
   - dscripts/build.sh -u
 
 script:
-  - dscripts/run.sh
-  - dscripts/run.sh -ip /init_sample_config.sh
-  - dscripts/run.sh -ip /init_sample_data_eduAt.sh
-  - dscripts/run.sh -ip /dump_testuser.sh  # very basic test -> extend
+  - dscripts/run.sh -V
+  - dscripts/run.sh -ipV /init_sample_config.sh
+  - dscripts/run.sh -ipV /init_sample_data_eduAt.sh
+  - dscripts/run.sh -ipV /dump_testuser.sh  # very basic test -> extend
 
 after_success:
 #  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" || travis_terminate $?;
