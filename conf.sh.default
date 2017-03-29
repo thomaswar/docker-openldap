@@ -88,7 +88,7 @@ set_network() {
 set_vol_mapping() {
     map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_ROOT
     map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_ROOT
-    map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' DOCKERLOG_ROOT
+    map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' $DOCKERLOG_ROOT
 }
 
 
