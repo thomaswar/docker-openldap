@@ -11,13 +11,12 @@ testpw = 'test'
 
 print('connection establishment')
 s = Server(host, get_info=ALL)
-c = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=True, client_strategy=LDIF)
-
+c = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=True)
 
 print('dump_testuser search')
 c.search('dc=at', '(objectclass=*)')
-import pdb; pdb.set_trace()
-print('; '.join(c.entries))
+
+print('; '.join(c.entries))  # needs work
 
 print('change password')
 c.modify('uid=test.user2_adam', {'userPassword': [(MODIFY_REPLACE, ['newpass'])]})
