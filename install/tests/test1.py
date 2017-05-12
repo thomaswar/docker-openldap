@@ -7,16 +7,21 @@ port = os.environ['SLAPDPORT'] if 'SLAPDPORT' in os.environ else '8389'
 host = 'localhost:' + port
 rootdn = 'dc=at'
 admindn = 'cn=admin,dc=at'
+userdn = 'uid=test.user2_adam,dc=schule,dc=at'
 testpw = 'test'
 
-print('connection establishment')
+print('connecting as ' + admindn)
 s = Server(host, get_info=ALL)
-c = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=True)
+conn1 = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=True)
 
 print('dump_testuser search')
-c.search('dc=at', '(objectclass=*)')
-
-print('; '.join(c.entries))  # needs work
+conn1.search('dc=at', '(objectclass=*)')
+print(conn1.entries)
 
 print('change password')
-c.modify('uid=test.user2_adam', {'userPassword': [(MODIFY_REPLACE, ['newpass'])]})
+conn1.modify(userdn, {'userPassword': [(MODIFY_REPLACE, ['newpass'])]})
+
+print('connecting as ' + userdn)
+conn2 = Connection(s, userdn, 'newpass', auto_bind=True, raise_exceptions=True)
+conn2.search('dc=at', '(uid=*)')
+print(conn2.entries)
