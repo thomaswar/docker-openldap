@@ -12,7 +12,7 @@ testpw = 'test'
 
 print('connection establishment')
 s = Server(host, get_info=ALL)
-c = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=False, client_strategy=LDIF)
+c = Connection(s, admindn, rootpw, auto_bind=True, raise_exceptions=False)
 
 print('add test-add')
 c.add('cn=test-add-operation,o=test', 'inetOrgPerson',
