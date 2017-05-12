@@ -9,16 +9,24 @@ any time without loss of data, because data is stored on data volumes.
 1. Clone this repository and change into the directory 
 2. Copy conf.sh.default to conf.sh
 3. Run `git submodule update --init` and `cd dscripts && git checkout master && cd ..`
-4. Modify conf.sh
+4. Modify conf.sh (optional)
 5. dscripts/build.sh  # For local images only
 
 ## Usage
 
+### Setup
+
+    dscripts/run.sh -ir /tests/init_sample_config_xxx.sh    # initialize sample xxx configuration, set root-pw
+    dscripts/run.sh -p # start slapd in daemon mode
+    dscripts/exec.sh   # start interactive shell
+        /tests/init_sample_data_xxx.sh    # initialize sample xxx data, see install/scripts/
+        /tests/dump_testuser.sh   
+        /tests/authn_testuser.sh   
+
+### Operation
+
     cd <project root>
     dscripts/run.sh [-p] # start slapd in daemon mode
-    dscripts/run.sh -ir /scripts/init_sample_config.sh    # initialize sample configuration, set root-pw
-    dscripts/exec.sh /scripts/init_sample_data_xxxx.sh    # initialize sample data, see install/scripts/
-    dscripts/run.sh -ir  # start interactive bash as root user  
     dscripts/exec.sh -i  # open a second shell
 
 ## User Namespace Mapping
