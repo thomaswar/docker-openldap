@@ -16,10 +16,12 @@ before_script:
   - dscripts/build.sh -u
 
 script:
-  - dscripts/run.sh -ipV  # will hang
-  - dscripts/exec.sh -p /init_sample_config_edu_at.sh
-  - dscripts/exec.sh -p /init_sample_data_eduAt.sh
-  - dscripts/exec.sh -p /dump_testuser.sh  # very basic test -> extend
+  - dscripts/run.sh -ip /tests/init_sample_config_edu_at.sh
+  - dscripts/run.sh -p  # start slapd in background
+  - sleep 2
+  - dscripts/exec.sh -p /tests/init_sample_data_eduAt.sh
+  - dscripts/exec.sh -p /tests/dump_testuser.sh  # very basic test -> extend
+  - dscripts/exec.sh -p /tests/authn_testuser.sh  # very basic test -> extend
 
 after_success:
 #  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" || travis_terminate $?;
