@@ -4,7 +4,7 @@ echo "loading openldap with sample edu data"
 
 ldapadd -h localhost -p $SLAPDPORT \
     -x -D cn=admin,dc=at -w $ROOTPW \
-    -c -f /opt/sample_data/etc/openldap/data/eduAt_init.ldif
+    -c -f /opt/sample_data/etc/openldap/data/edushareAt_init.ldif
 
 ldappasswd -h localhost -p $SLAPDPORT \
     -x -D cn=admin,dc=at -w $ROOTPW \
@@ -25,7 +25,7 @@ ldappasswd -h localhost -p $SLAPDPORT \
 #echo "loading openldap with sample gv.at data"
 #ldapadd -h localhost -p $SLAPDPORT \
 #    -x -D cn=admin,dc=at -w $ROOTPW \
-#    -c -f /opt/sample_data/etc/openldap/data/eduAt_init.ldif
+#    -c -f /opt/sample_data/etc/openldap/data/edushareAt_init.ldif
 #
 #ldappasswd -h localhost -p $SLAPDPORT \
 #    -x -D cn=admin,dc=at -w $ROOTPW \

@@ -1,8 +1,10 @@
 #!/bin/sh
-# initialize slapd.conf
+
+echo 'initialize slapd.conf with edushareAt schema'
 
 mv /etc/openldap/slapd.conf /etc/openldap/slapd.conf.default
-mv /etc/openldap/slapd_edu_at_example.conf /etc/openldap/slapd.conf
+mv /etc/openldap/slapd_edushareAt_example.conf /etc/openldap/slapd.conf
+
 
 if [ $(grep -q '^rootpw' /etc/openldap/slapd.conf) ]; then
     echo "rootpw directive already set in slapd.conf"

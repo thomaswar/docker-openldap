@@ -28,7 +28,7 @@ cn: Knowledge Markets Consulting - Testschule
 # ---------- User 1 -----------------
 dn: uid=test.user1234567, dc=schule, dc=at
 objectClass: inetOrgPerson
-objectClass: eduAtPerson
+objectClass: edushareAtPerson
 gvgid: 188456
 gvbPK: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
 cn: Test User
@@ -46,7 +46,7 @@ gvRights: CMS-XYZ
 # ---------- User 2 -----------------
 dn: uid=test.user2_adam, dc=schule, dc=at
 objectClass: inetOrgPerson
-objectClass: eduAtPerson
+objectClass: edushareAtPerson
 gvgid: 188999
 gvbPK: S4B7YUFKSFg77JzZJIZHDLaf+8jJ
 #cn: Adam Bäcker
@@ -66,7 +66,7 @@ gvRights: CMS-XYZ
 # ---------- User 3 -----------------
 dn: uid=test.user3_eva, dc=schule, dc=at
 objectClass: inetOrgPerson
-objectClass: eduAtPerson
+objectClass: edushareAtPerson
 gvgid: 176452
 gvbPK: 3vYjUkvzPsGHqZvIXmEbCyOXO24d
 #cn: Eva Schüßler-Bäcker
@@ -87,7 +87,7 @@ gvRights: CMS-XYZ
 # ---------- User 4 -----------------
 dn: uid=test.user4_berta, dc=schule, dc=at
 objectClass: inetOrgPerson
-objectClass: eduAtPerson
+objectClass: edushareAtPerson
 gvgid: 8403654
 gvbPK: gVnzmhzOu2AFSe12FFgThVfKw2Sd
 #cn: Berta Chamäleon Koala

@@ -1,11 +1,11 @@
 #
-# TODO need to define own OIS space ---
+# TODO need to define own OID space ---
 
-# eduAtPerson objectclass definition
+# edushareAtPerson objectclass definition
 # designed to extend inetOrgPerson to complete an edushare user
 
 objectClass ( 1.2.40.0.10.2.1.0.901.1
-    NAME 'eduAtPerson'
+    NAME 'edushareAtPerson'
  	AUXILIARY
 	MUST ( o $ eduPersonScopedAffiliation $gvGid )
 	MAY ( gvbPK $ schacGender $ ou $ gvRights ) )
