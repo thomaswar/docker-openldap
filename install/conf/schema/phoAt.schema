@@ -36,7 +36,7 @@ attributetype ( 1.3.6.1.4.1.38425.432 NAME 'phoWeiterbildungAktiv'     DESC 'Act
 objectClass ( 1.3.6.1.4.1.38425.101
     NAME 'phoPerson'
  	AUXILIARY
-	MUST (
+	MAY (
         nspmDistributionPassword  $
         phoSchulkennzahl          $
         phoSapPersnr              $

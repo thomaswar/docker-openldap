@@ -4,4 +4,9 @@ echo "loading /etc/openldap with sample data "
 
 ldapadd -h localhost -p $SLAPDPORT \
     -x -D cn=admin,dc=at -w $ROOTPW \
-    -f /opt/sample_data/etc/openldap/data/phoAt_init.ldif
+    -c -f /opt/sample_data/etc/openldap/data/phoAt_init.ldif
+
+ldappasswd -h localhost -p $SLAPDPORT \
+    -x -D cn=admin,dc=at -w $ROOTPW \
+    -s 'test' \
+    'cn=test.user1234567, o=ph-noe, dc=ac, dc=at'
