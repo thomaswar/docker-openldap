@@ -16,7 +16,7 @@ before_script:
   - dscripts/build.sh -u
 
 script:
-  - bash -x dscripts/run.sh -ipV /tests/init_sample_config_phoAt.sh
+  - dscripts/run.sh -ipV /tests/init_sample_config_phoAt.sh
   - dscripts/run.sh -pV  # start slapd in background
   - sleep 2
   - dscripts/exec.sh /tests/init_sample_data_phoAt.sh
