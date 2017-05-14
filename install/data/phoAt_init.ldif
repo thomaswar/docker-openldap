@@ -11,7 +11,6 @@ dc: ac
 
 dn: o=ph-noe, dc=schule, dc=at
 objectClass: Organization
-objectClass: ph-noe
 o: ph-noe
 
 # ---------- Test-User 1 -----------------
