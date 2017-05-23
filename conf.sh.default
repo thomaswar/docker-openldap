@@ -16,17 +16,17 @@ main() {
     set_network
     set_vol_mapping
     #enable_x11_client
-    #enablet_pkcs11
+    #enable_pkcs11
     #enable_sshd()     # usually used only for debugging - requires installed sshd in image
 }
 
 
 set_volume_root() {
-    DOCKERVOL_ROOT='/dv'
-    DOCKERLOG_ROOT='/dl'
-    if [ "$TRAVIS" == "true" ]; then
-        DOCKERVOL_ROOT='./dv';
-        DOCKERLOG_ROOT='./dl';
+    DOCKERVOL_SHORT='/dv'
+    DOCKERLOG_SHORT='/dl'
+    if [[ "$TRAVIS" == "true" ]] || [[ ! -z ${JENKINS_HOME+x} ]]; then
+        DOCKERVOL_SHORT='./dv';
+        DOCKERLOG_SHORT='./dl';
     fi
 }
 
@@ -49,7 +49,8 @@ set_image_signature_args() {
 
 
 set_users() {
-    export START_AS_ROOT='True'      # 'True' (e.g. for apache to fall back to www user)
+    # use default OS user
+    export START_AS_ROOT=      # 'True' (e.g. for apache to fall back to www user)
 }
 
 
@@ -86,10 +87,11 @@ set_network() {
 
 
 set_vol_mapping() {
-    VOLMAPPING=''
-    map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_ROOT
-    map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_ROOT
-    map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' $DOCKERLOG_ROOT
+    export VOLLIST=''
+    export VOLMAPPING=''
+    map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_SHORT
+    map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_SHORT
+    map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' $DOCKERLOG_SHORT
 }
 
 
