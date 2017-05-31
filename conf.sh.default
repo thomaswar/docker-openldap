@@ -36,6 +36,7 @@ set_image_and_container_name() {
     IMGID='06'
     # processes on the docker host etc.
     PROJSHORT='openldap'
+    SERVICEDESCRIPTION="human readable service name, e.g. ldap://10.1.1.${IMGID}:8389"
     export IMAGENAME="rhoerbe/$PROJSHORT"  # [a-z_0-9]
     export CONTAINERNAME="${IMGID}$PROJSHORT"
     export DOCKER_REGISTRY=''  # blank for index.docker.io
