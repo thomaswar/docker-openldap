@@ -632,3 +632,76 @@ objectClass: gvX509Certificate
 objectClass: top
 gvStatus: active
 
+
+# ---------- User 1 -----------------
+dn: gvGid=AT:B:1:12346,ou=people, gvOuId=AT:TEST:1, dc=gv, dc=at
+displayName: User Test1
+gvStatus: active
+gvRights: gvApplId=localtest@bmspot.gv.at,ou=Applications,gvOuId=AT:TEST:1,dc=gv,dc=AT$test(x=12,y=13,z=99);test(GKZ=12345);test(DST=xxx);test(test=true) ;test(a=a,b=1,b=2,c=3);test(x=,y=)
+givenName: Test1
+gvbPK: AT:B:0:j/NxdRQhp+tNyE9WhHdBSYuy3hA=
+objectClass: gvPrincipal
+objectClass: gvOrgPerson
+objectClass: top
+objectClass: organizationalPerson
+objectClass: person
+objectClass: inetOrgPerson
+uid: test1@bmspot.gv.at
+mail: test1@bmspot.gv.at
+cn: Test1 User
+gvbPK: 01afdfkl6d2e0976a0292232dcfep06bk9d220
+gvUserPassword: test
+gvGid: AT:B:1:12346
+gvParticipantOuId: AT:TEST:1
+sn: User
+gvOu: AT:TEST:2
+gvScope: public
+gvSource: test
+
+# ---------- User 2 -----------------
+dn: gvGid=AT:B:1:12347,ou=people, gvOuId=AT:TEST:1, dc=gv, dc=at
+displayName: User Test2
+gvStatus: active
+gvRights: gvApplId=localtest@bmspot.gv.at,ou=Applications,gvOuId=AT:TEST:1,dc=gv,dc=AT$test(x=12,y=13,z=99);test(GKZ=12345);test(DST=xxx);test(test=true) ;test(a=a,b=1,b=2,c=3);test(x=,y=)
+givenName: Test2
+gvbPK: AT:B:0:j/NxdRQhp+tNyE9WhHdBSYuy3hA=
+objectClass: gvPrincipal
+objectClass: gvOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: inetOrgPerson
+uid: test2@bmspot.gv.at
+mail: test2@bmspot.gv.at
+cn: Test2 User
+gvbPK: 01afdfkl6d2e0976a0292232dcfep06bk9d220
+gvUserPassword: test
+gvGid: AT:B:1:12347
+gvParticipantOuId: AT:TEST:1
+sn: User
+gvOu: AT:TEST:2
+gvScope: public
+gvSource: test
+
+# ---------- User 3 -----------------
+dn: gvGid=AT:B:1:12348, ou=people, gvOuId=AT:TEST:1, dc=gv, dc=at
+objectClass: inetOrgPerson
+objectClass: gvOrgPerson
+objectClass: gvPrincipal
+#cn: Eva Schüßler-Bäcker
+cn:: RXZhIFNjaMO8w59sZXItQsOkY2tlcgo=
+givenName: Eva
+#sn: Schüßler-Bäcker
+sn:: U2Now7zDn2xlci1Cw6Rja2VyCg==
+uid: test.user3_eva
+mail: eva.schuessler@lms.at
+displayName: Eva Schuessler-Baecker
+gvRights: gvApplId=localtest@bmspot.gv.at,ou=Applications,gvOuId=AT:TEST:1,dc=gv,dc=AT$test(x=12,y=13,z=99);test(GKZ=12345);test(DST=xxx);test(test=true) ;test(a=a,b=1,b=2,c=3);test(x=,y=)
+givenName: Test2
+gvbPK: 3vYjUkvzPsGHqZvIXmEbCyOXO24d
+gvUserPassword: test
+gvGid: AT:B:1:12348
+gvParticipantOuId: AT:TEST:47
+gvOu: AT:TEST:2
+gvScope: public
+gvSource: test
+gvStatus: active
