@@ -13,7 +13,7 @@ RUN yum -y update \
  && yum -y install curl iproute lsof net-tools \
  && yum -y install python34-devel \
  && curl https://bootstrap.pypa.io/get-pip.py | python3.4 \
- && pip install ldap3 \
+ && pip3 install ldap3 \
  && yum -y install openldap openldap-servers openldap-clients \
  && yum clean all
 
