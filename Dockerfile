@@ -20,6 +20,7 @@ RUN yum -y update \
 # save system default ldap config and extend it with project-specific files
 RUN mkdir -p /opt/sample_data/etc/openldap/data/
 COPY install/conf/*.conf /etc/openldap/
+COPY install/conf/*hosts /etc/openldap/
 COPY install/conf/schema/* /etc/openldap/schema/
 COPY install/data/* /opt/sample_data/etc/openldap/data/
 COPY install/conf/DB_CONFIG /var/db/
