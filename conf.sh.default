@@ -22,12 +22,8 @@ main() {
 
 
 set_volume_root() {
-    DOCKERVOL_SHORT='/dv'
-    DOCKERLOG_SHORT='/dl'
-    if [[ "$TRAVIS" == "true" ]] || [[ ! -z ${JENKINS_HOME+x} ]]; then
-        DOCKERVOL_SHORT='./dv';
-        DOCKERLOG_SHORT='./dl';
-    fi
+    DOCKERVOL_SHORT='./dv'
+    DOCKERLOG_SHORT='./dl'
 }
 
 
@@ -90,6 +86,7 @@ set_network() {
 set_vol_mapping() {
     export VOLLIST=''
     export VOLMAPPING=''
+    CONTAINER_GROUPWRITE=no
     map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_SHORT
     map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_SHORT
     map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' $DOCKERLOG_SHORT
