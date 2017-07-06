@@ -9,7 +9,7 @@ main() {
     init_sudo
     set_volume_root
     set_image_and_container_name
-    set_image_signature_args
+    #set_image_signature_args
     set_users
     set_buildargs
     set_run_args
