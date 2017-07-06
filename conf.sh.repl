@@ -9,7 +9,7 @@ main() {
     init_sudo
     set_volume_root
     set_image_and_container_name
-    #set_image_signature_args
+    set_image_signature_args
     set_users
     set_buildargs
     set_run_args
@@ -22,8 +22,12 @@ main() {
 
 
 set_volume_root() {
-    DOCKERVOL_SHORT='./dv'
-    DOCKERLOG_SHORT='./dl'
+    DOCKERVOL_SHORT='/dv'
+    DOCKERLOG_SHORT='/dl'
+    if [[ "$TRAVIS" == "true" ]] || [[ ! -z ${JENKINS_HOME+x} ]]; then
+        DOCKERVOL_SHORT='./dv';
+        DOCKERLOG_SHORT='./dl';
+    fi
 }
 
 
@@ -61,7 +65,7 @@ set_run_args() {
     export ENVSETTINGS="
         -e ROOTPW=changeit
         -e USERNAME=slapd
-        -e SLAPDHOST=0.0.0.0
+        -e SLAPDHOST=${IMGID}openldap
     "
     export STARTCMD='/start.sh'  # unset or blank to use image default
 }
@@ -86,7 +90,6 @@ set_network() {
 set_vol_mapping() {
     export VOLLIST=''
     export VOLMAPPING=''
-    CONTAINER_GROUPWRITE=no
     map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_SHORT
     map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_SHORT
     map_docker_volume "${CONTAINERNAME}.log" '/var/log/openldap' 'Z' $DOCKERLOG_SHORT
