@@ -34,8 +34,20 @@ pipeline {
         stage('Test ') {
             steps {
                 sh '''
-                echo 'Testing..'
-                ./dscripts/run.sh -IV python3 /test1.py
+                echo 'Configure & start slapd ..'
+                ./dscripts/run.sh -ipV /tests/init_sample_config_phoAt.sh
+                ./dscripts/run.sh -pV  # start slapd in background
+                sleep 2
+                '''
+                sh '''
+                echo 'Load test data ..'
+                ./dscripts/exec.sh /tests/init_sample_data_phoAt.sh
+                '''
+                sh '''
+                echo 'query data ..'
+                ./dscripts/exec.sh /tests/dump_testuser.sh
+                ./dscripts/exec.sh /tests/authn_testuser.sh
+                ./dscripts/exec.sh python3.4 /tests/test1.py
                 '''
             }
         }
