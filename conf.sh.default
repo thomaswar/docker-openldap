@@ -22,8 +22,8 @@ main() {
 
 
 set_volume_root() {
-    DOCKERVOL_SHORT='./dv'
-    DOCKERLOG_SHORT='./dl'
+    DOCKERVOL_SHORT='/tmp/dv'
+    DOCKERLOG_SHORT='/tmp/dl'
 }
 
 

@@ -13,7 +13,7 @@ before_script:
   # git submodule init && git submodule update  # done automaticall by travis
   - cd dscripts && git checkout master && git pull && cd ..
   - cp conf.sh.default conf.sh
-  - mkdir ~/.dv ~/.dl
+  - mkdir /tmp/.dv /tmp/.dl
   - dscripts/build.sh -u
 
 script:
