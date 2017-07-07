@@ -35,7 +35,7 @@ pipeline {
             steps {
                 sh '''
                 echo 'Configure & start slapd ..'
-                ./dscripts/run.sh -ipV /tests/init_sample_config_phoAt.sh
+                ./dscripts/run.sh -IpV /tests/init_sample_config_phoAt.sh
                 ./dscripts/run.sh -pV  # start slapd in background
                 sleep 2
                 '''
