@@ -22,8 +22,14 @@ main() {
 
 
 set_volume_root() {
-    DOCKERVOL_SHORT='/tmp/dv'
-    DOCKERLOG_SHORT='/tmp/dl'
+    # container volumes mounted to host paths, or symlinks to docker volumes
+    DOCKERVOL_SHORT='/dv'
+    DOCKERLOG_SHORT='/dl'
+    if [[ "$TRAVIS" == "true" ]] || [[ ! -z ${JENKINS_HOME+x} ]]; then
+        DOCKERVOL_SHORT='/tmp/dv'
+        DOCKERLOG_SHORT='/tmp/dl'
+    fi
+    mkdir -p $DOCKERVOL_SHORT $DOCKERLOG_SHORT
 }
 
 
