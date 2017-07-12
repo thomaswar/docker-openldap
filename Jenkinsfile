@@ -38,6 +38,8 @@ pipeline {
                 ./dscripts/run.sh -IpV /tests/init_sample_config_phoAt.sh
                 ./dscripts/run.sh -pV  # start slapd in background
                 sleep 2
+                echo 'Load initial tree data ..'
+                ./dscripts/exec.sh -I /tests/init_dit_data_phoAt.sh
                 '''
                 sh '''
                 echo 'Load test data ..'

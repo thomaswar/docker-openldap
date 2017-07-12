@@ -4,7 +4,7 @@ echo "loading /etc/openldap with sample data "
 
 ldapadd -h $SLAPDHOST -p $SLAPDPORT \
     -x -D cn=admin,o=BMUKK -w $ROOTPW \
-    -c -f /opt/sample_data/etc/openldap/data/phoAt_init.ldif
+    -c -f /opt/sample_data/etc/openldap/data/phoAt_test.ldif
 
 ldappasswd -h $SLAPDHOST -p $SLAPDPORT \
     -x -D cn=admin,o=BMUKK -w $ROOTPW \
