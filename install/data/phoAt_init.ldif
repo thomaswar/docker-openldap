@@ -1,54 +1,60 @@
-# Top Nodes
-dn: dc=at
-objectClass: domain
-dc: at
-
-dn: dc=ac, dc=at
-objectClass: domain
-dc: ac
+# Top Nodes, FIXME: there should be one for each instance
+dn: o=BMUKK
+objectClass: Organization
+#objectClass: Top
+#objectClass: Partition
+o: BMUKK
 
 # ---------- PHO Noe -----------------
 
-dn: o=ph-noe, dc=ac, dc=at
-objectClass: Organization
-o: ph-noe
+dn: ou=ph08,o=BMUKK
+objectClass: organizationalUnit
+#objectClass: Top
+ou: ph08
+
+dn: ou=user,ou=ph08,o=BMUKK
+objectClass: organizationalUnit
+#objectClass: Top
+ou: user
 
 # ---------- Test-User 1 -----------------
-dn: cn=test.user1234567, o=ph-noe, dc=ac, dc=at
+dn: cn=test.user1234567, ou=user,ou=ph08,o=BMUKK
 objectClass: inetOrgPerson
-objectClass: phoPerson
+objectClass: phonlinePerson
+#objectClass: organizationalPerson
+#objectClass: Person
+#objectClass: Top
 cn: test.user1234567
 givenName: Test
 sn: User
-o: ph-noe
 nspmDistributionPassword: xxxxxxxxx
-phoSchulkennzahl: 101036
-phoSapPersnr: 4711
-phoBPK: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
-phoFunktionen: Schulleitung
-phoEmailStudent: test.user123456@schule.at
-phoGebDatum:  1954-07-31
-phoIdentNr: 123456
-phoMatrikelnummer: 987654
-phoPersonNr: 123456789
+phonlineSchulkennzahl: 101036
+phonlineSapPersnr: 4711
+phonlineBPK: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
+phonlineFunktionen: Schulleitung
+phonlineEmailStudent: test.user123456@schule.at
+phonlineGebDatum:  1954-07-31
+phonlineIdentNr: 123456
+phonlineMatrikelnummer: 987654
+phonlinePersonNr: 123456789
 
-#phoAccStBediensteter:
-#phoAccStStudent:
-#phoAccStWeiterbildung:
-#phoBediensteterAktiv:
-#phoBenutzergruppe:
-#phoChipIDBediensteter:
-#phoChipIDStudent:
-#phoChipIDWeiterbildung:
-#phoEmailBediensteter:
-#phoMirfareIDBediensteter:
-#phoMirfareIDStudent:
-#phoMirfareIDWeiterbildung:
-#phoOrgEinheiten:
-#phoPersonNrOBF:
-#phoPersonNrOBFStudent:
-#phoPersonNrStudent:
-#phoBediensteterAktiv:
-#phoStudentAktiv:
-#phoWeiterbildungAktiv:
+#phonlineAccStBediensteter:
+#phonlineAccStStudent:
+#phonlineAccStWeiterbildung:
+#phonlineBediensteterAktiv:
+#phonlineBenutzergruppe:
+#phonlineChipIDBediensteter:
+#phonlineChipIDStudent:
+#phonlineChipIDWeiterbildung:
+#phonlineEmailBediensteter:
+#phonlineMirfareIDBediensteter:
+#phonlineMirfareIDStudent:
+#phonlineMirfareIDWeiterbildung:
+#phonlinenlineOrgEinheiten:
+#phonlinePersonNrOBF:
+#phonlinePersonNrOBFStudent:
+#phonlinePersonNrStudent:
+#phonlineBediensteterAktiv:
+#phonlineStudentAktiv:
+#phonlineWeiterbildungAktiv:
 
