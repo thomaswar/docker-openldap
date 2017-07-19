@@ -24,7 +24,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                echo 'Building..'
+                echo 'Building ..'
                 rm conf.sh 2> /dev/null || true
                 ln -s conf.sh.default conf.sh
                 ./dscripts/build.sh
@@ -50,6 +50,13 @@ pipeline {
                 ./dscripts/exec.sh -I /tests/dump_testuser.sh
                 ./dscripts/exec.sh -I /tests/authn_testuser.sh
                 ./dscripts/exec.sh -I python3.4 /tests/test1.py
+                '''
+            }
+        }
+        stage('Push to Registry') {
+            steps {
+                sh '''
+                ./dscripts/manage.sh push
                 '''
             }
         }
