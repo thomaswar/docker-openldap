@@ -33,3 +33,7 @@ any time without loss of data, because data is stored on data volumes.
 
 If the docker daemon does not support user namespace maaping, the image will run with the
 default ldap uid/gid configured at build time.
+
+## Cluster Configuration
+
+See link:docs/cluster.adoc
