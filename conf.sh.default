@@ -9,7 +9,6 @@ main() {
     init_sudo
     set_volume_root
     set_image_and_container_name
-    #set_image_signature_args
     set_users
     set_buildargs
     set_run_args
@@ -41,14 +40,17 @@ set_image_and_container_name() {
     SERVICEDESCRIPTION="ldap://10.1.1.${IMGID}:8389"  # adjust to actual service
     export IMAGENAME="rhoerbe/$PROJSHORT"  # [a-z_0-9]
     export CONTAINERNAME="${IMGID}$PROJSHORT"
-    export DOCKER_REGISTRY=''  # blank for index.docker.io
+    export DOCKER_REGISTRY=''  # empty for docker.io
+    if [[ $JENKINS_HOME ]]; then
+        export DOCKER_REGISTRY='localhost:5000'
+    fi
 }
 
 
-set_image_signature_args() {
-    export DIDI_SIGNER='rh@identinetics.com'  # PGP uid  - no verification if empty
-    export GPG_SIGN_OPTIONS='--default-key 904F1906'
-}
+#set_image_signature_args() {
+#    export DIDI_SIGNER='rh@identinetics.com'  # PGP uid  - no verification if empty
+#    export GPG_SIGN_OPTIONS='--default-key 904F1906'
+#}
 
 
 set_users() {
