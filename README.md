@@ -4,6 +4,8 @@ The image produces immutable containers, i.e. data volumes are outside the
 containers COW file system. A container can be removed and re-created
 any time without loss of data, because data is stored on data volumes.
 
+Using the dscripts project this container provides some docker convenience for the CLI.
+
 ## Configuration
 
 1. Clone this repository and change into the directory 
