@@ -30,6 +30,10 @@ RUN chmod +x /*.sh /tests/*
 
 ARG SLAPDPORT=8389
 ENV SLAPDPORT $SLAPDPORT
+# You may want to turn on debugging by setting the following params
+# when starting the container:
+#ENV DEBUGLEVEL conns,config,stats,shell,trace 
+ENV DEBUGLEVEL 0
 
 # using the shared grop method from https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html (Support Arbitrary User IDs)
 RUN mkdir -p /var/log/openldap \
