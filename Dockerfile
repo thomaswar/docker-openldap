@@ -38,10 +38,9 @@ ENV DEBUGLEVEL 0
 # using the shared grop method from https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html (Support Arbitrary User IDs)
 RUN mkdir -p /var/log/openldap \
  && chown -R ldap:root /etc/openldap /var/db /var/log/openldap /opt/sample_data \
- && chmod 600 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
- && chmod 700 $(find   /etc/openldap /var/db /var/log/openldap -type d)
-VOLUME /etc/openldap/ \
-       /var/db/ \
+ && chmod 660 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
+ && chmod 770 $(find   /etc/openldap /var/db /var/log/openldap -type d)
+VOLUME /var/db/ \
        /var/log/openldap
 
 CMD /start.sh
