@@ -33,15 +33,22 @@ ENV SLAPDPORT $SLAPDPORT
 # You may want to turn on debugging by setting the following params
 # when starting the container:
 #ENV DEBUGLEVEL conns,config,stats,shell,trace 
-ENV DEBUGLEVEL 0
+ENV DEBUGLEVEL conns,config,stats
 
 # using the shared grop method from https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html (Support Arbitrary User IDs)
+# FIXME: We now have mode 777 for the config and db directories due to
+# UID-Bug in openshift. This should be closed down to at least set the
+# GID to 0 so that we can set this to 770 instead!
 RUN mkdir -p /var/log/openldap \
  && chown -R ldap:root /etc/openldap /var/db /var/log/openldap /opt/sample_data \
- && chmod 660 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
- && chmod 770 $(find   /etc/openldap /var/db /var/log/openldap -type d)
+ && chmod 664 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
+ && chmod 777 $(find   /etc/openldap /var/db /var/log/openldap -type d)
 VOLUME /var/db/ \
        /var/log/openldap
 
+EXPOSE 8389
+
 CMD /start.sh
-USER ldap
+# Set arbitrary user to check that this will work in openshift
+# This doesn't work due to ACL settings on the development machine.
+#USER 100000
