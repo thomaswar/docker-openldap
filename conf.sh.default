@@ -70,7 +70,7 @@ set_run_args() {
         -e ROOTPW=changeit
         -e USERNAME=slapd
         -e SLAPDHOST=0.0.0.0
-        -e DEBUGLEVEL=conns,config
+        -e DEBUGLEVEL=0
     "
         # full debug & trace
         # -e DEBUGLEVEL=conns,config,stats,shell,trace
