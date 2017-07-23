@@ -49,7 +49,7 @@ pipeline {
                 echo 'query data ..'
                 ./dscripts/exec.sh -I /tests/dump_testuser.sh
                 ./dscripts/exec.sh -I /tests/authn_testuser.sh
-                ./dscripts/exec.sh -I python3.4 /tests/test1.py
+                ./dscripts/exec.sh -I /tests/test1.sh
                 '''
             }
         }
