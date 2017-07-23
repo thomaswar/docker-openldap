@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "loading /etc/openldap with sample data "
-rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $1'})
+rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $2'})
 
 ldapadd -h $SLAPDHOST -p $SLAPDPORT \
     -x -D $rootdn -w $ROOTPW \
