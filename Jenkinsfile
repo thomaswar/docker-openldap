@@ -75,6 +75,7 @@ pipeline {
                 ./dscripts/exec.sh -I -u $randomuid /tests/test1.sh
                 '''
             }
+        }
         stage('Push to Registry') {
             steps {
                 sh '''
