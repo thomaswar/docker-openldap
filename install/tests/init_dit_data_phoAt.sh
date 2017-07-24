@@ -2,7 +2,7 @@
 
 echo "loading /etc/openldap with initial tree data "
 
-rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $1'} | tr -d '"')
+rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $2'} | tr -d '"')
 
 ldapadd -h $SLAPDHOST -p $SLAPDPORT \
     -x -D $rootdn -w $ROOTPW \
