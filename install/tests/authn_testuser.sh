@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $2'})
-suffix=$(grep ^suffix /etc/openldap/slapd.conf | awk {'print $2'})
+rootdn=$(grep ^rootdn /etc/openldap/slapd.conf | awk {'print $2'} | tr -d '"')
+suffix=$(grep ^suffix /etc/openldap/slapd.conf | awk {'print $2'} | tr -d '"')
 
 ldapsearch -h localhost -p $SLAPDPORT -x -D \
     'cn=test.user1234567,ou=user,ou=ph08,o=BMUKK' \
