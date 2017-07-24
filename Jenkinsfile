@@ -31,7 +31,7 @@ pipeline {
                 '''
             }
         }
-        stage('Test ') {
+        stage('Test with default uid') {
             steps {
                 sh '''
                 echo 'Configure & start slapd ..'
@@ -53,6 +53,28 @@ pipeline {
                 '''
             }
         }
+        stage('Test with random uid') {
+            steps {
+                sh '''
+                echo 'Configure & start slapd ..'
+                randomuid=9999999
+                ./dscripts/run.sh -Ip -u $randomuid /tests/init_sample_config_phoAt.sh
+                ./dscripts/run.sh -p -u $randomuid  # start slapd in background
+                sleep 2
+                echo 'Load initial tree data ..'
+                ./dscripts/exec.sh -I -u $randomuid /tests/init_dit_data_phoAt.sh
+                '''
+                sh '''
+                echo 'Load test data ..'
+                ./dscripts/exec.sh -I -u $randomuid /tests/init_sample_data_phoAt.sh
+                '''
+                sh '''
+                echo 'query data ..'
+                ./dscripts/exec.sh -I -u $randomuid /tests/dump_testuser.sh
+                ./dscripts/exec.sh -I -u $randomuid /tests/authn_testuser.sh
+                ./dscripts/exec.sh -I -u $randomuid /tests/test1.sh
+                '''
+            }
         stage('Push to Registry') {
             steps {
                 sh '''
