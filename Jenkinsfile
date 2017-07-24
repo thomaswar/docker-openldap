@@ -56,6 +56,9 @@ pipeline {
         stage('Test with random uid') {
             steps {
                 sh '''
+                echo 'Cleanup: remove container and volumes ..'
+                sh './dscripts/manage.sh rm 2>/dev/null || true'
+                sh './dscripts/manage.sh rmvol 2>/dev/null || true'
                 echo 'Configure & start slapd ..'
                 randomuid=9999999
                 ./dscripts/run.sh -Ip -u $randomuid /tests/init_sample_config_phoAt.sh
