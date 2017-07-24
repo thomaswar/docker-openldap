@@ -66,12 +66,8 @@ pipeline {
                 sleep 2
                 echo 'Load initial tree data ..'
                 ./dscripts/exec.sh -I -u $randomuid /tests/init_dit_data_phoAt.sh
-                '''
-                sh '''
                 echo 'Load test data ..'
                 ./dscripts/exec.sh -I -u $randomuid /tests/init_sample_data_phoAt.sh
-                '''
-                sh '''
                 echo 'query data ..'
                 ./dscripts/exec.sh -I -u $randomuid /tests/dump_testuser.sh
                 ./dscripts/exec.sh -I -u $randomuid /tests/authn_testuser.sh
