@@ -1,9 +1,13 @@
-FROM  centos:centos7
-LABEL version="0.5.0" \
-      didi_dir="https://raw.githubusercontent.com/identinetics/docker-openldap/master/didi" \
-      capabilities='--cap-drop=all --cap-add=setgid --cap-add=setuid'
+FROM centos:centos7
+LABEL maintainer="Rainer Hörbe <r2h2@hoerbe.at>" \
+      version="0.0.0" \
+      #UID_TYPE: select one of root, non-root or random to announce container behavior wrt USER
+      UID_TYPE="random" \
+      #didi_dir="https://raw.githubusercontent.com/identinetics/dscripts-test/master/didi" \
+      capabilities='--cap-drop=all'
 
-ENV UID 343006
+ARG UID=343006
+ARG USERNAME=ldap
 ENV GID 0
 RUN useradd --gid $GID --uid $UID ldap \
  && chown $UID:$GID /run
@@ -24,15 +28,15 @@ COPY install/conf/*hosts /etc/openldap/
 COPY install/conf/schema/* /etc/openldap/schema/
 COPY install/data/* /opt/sample_data/etc/openldap/data/
 COPY install/conf/DB_CONFIG /var/db/
-COPY install/scripts/*.sh /
+COPY install/scripts/* /scripts/
 COPY install/tests/* /tests/
-RUN chmod +x /*.sh /tests/*
+RUN chmod +x /scripts/* /tests/*
 
 ARG SLAPDPORT=8389
 ENV SLAPDPORT $SLAPDPORT
 # You may want to turn on debugging by setting the following params
 # when starting the container:
-#ENV DEBUGLEVEL conns,config,stats,shell,trace 
+#ENV DEBUGLEVEL conns,config,stats,shell,trace
 ENV DEBUGLEVEL conns,config,stats
 
 # using the shared grop method from https://docs.openshift.com/container-platform/3.3/creating_images/guidelines.html (Support Arbitrary User IDs)
@@ -48,7 +52,5 @@ VOLUME /var/db/ \
 
 EXPOSE 8389
 
-CMD /start.sh
-# Set arbitrary user to check that this will work in openshift
-# This doesn't work due to ACL settings on the development machine.
-#USER 100000
+CMD /scripts/start.sh
+USER ldap

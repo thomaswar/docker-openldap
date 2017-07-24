@@ -102,9 +102,4 @@ container_status() {
 }
 
 
-logrotate() {
-    find $DOCKERLOG_SHORT/${CONTAINERNAME}.var_log/ -mtime +5 -exec ls -ld {} \;
-}
-
-
 main $@
