@@ -84,14 +84,14 @@ create_intercontainer_network() {
 
 
 setup_vol_mapping() {
-    # Create docker volume (-> map_docker_volume) or map host dir (-> map_host_directory)
+    # Create docker volume (-> map_docker_volume) or map a host dir (-> map_host_directory)
     # In both cases create a shortcut in the shortcut directory (DOCKERVOL_SHORT, DOCKERLOG_SHORT)
-
+    mode=$1  # create (used by run.sh)/list (used by manage.sh)
     export VOLLIST=''
     export VOLMAPPING=''
     CONTAINER_GROUPWRITE=no
-    map_docker_volume "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_SHORT
-    map_docker_volume "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_SHORT
+    map_docker_volume $mode "${CONTAINERNAME}.db" '/var/db' 'Z' $DOCKERVOL_SHORT
+    map_docker_volume $mode "${CONTAINERNAME}.etc" '/etc/openldap' 'Z' $DOCKERVOL_SHORT
 }
 
 
