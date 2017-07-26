@@ -69,6 +69,14 @@ dn: ou=user,ou=ph08,o=BMUKK
 objectClass: organizationalUnit
 ou: user
 
+dn: ou=idnSync,ou=ph08,o=BMUKK
+objectClass: organizationalUnit
+ou: idnSync
+
+dn: ou=ETD,ou=idnSync,ou=ph08,o=BMUKK
+objectClass: organizationalUnit
+ou: ETD
+
 dn: ou=ph09,o=BMUKK
 objectClass: organizationalUnit
 ou: ph09
