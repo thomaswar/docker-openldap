@@ -1,16 +1,19 @@
 pipeline {
     agent any
-
+    environment {
+        http_proxy='http://proxy.lfrz.at:8080'
+        https_proxy='http://proxy.lfrz.at:8080'
+        no_proxy='127.0.0.1, localhost, *.vie01.local'
+    }
     stages {
         stage('Git pull + branch + submodule') {
             steps {
                 sh '''
-                echo 'hard coding git branch - TODO: move this to the jenkins git plugin'
-                #git checkout master
-                echo 'pulling updates'
-                git pull
+                printenv | grep proxy
+                #echo 'pulling updates'
+                #git pull
                 git submodule update --init
-                cd ./dscripts && git checkout master && git pull && cd ..
+                cd ./dscripts && git checkout master && git pull && cd -
                 '''
             }
         }
@@ -27,7 +30,7 @@ pipeline {
                 echo 'Building ..'
                 rm conf.sh 2> /dev/null || true
                 ln -s conf.sh.default conf.sh
-                ./dscripts/build.sh
+                ./dscripts/build.sh -p
                 '''
             }
         }
