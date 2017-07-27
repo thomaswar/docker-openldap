@@ -31,8 +31,8 @@ _set_image_and_container_name() {
     IMGID='06'
     PROJSHORT='openldap'
     SERVICEDESCRIPTION="ldap://10.1.1.${IMGID}:8389"  # adjust to actual service
-    #export IMAGENAME="rhoerbe/$PROJSHORT"  # [a-z_0-9] you may want to add an image id and/or staging tag
-    export IMAGENAME="r2h2/${PROJSHORT}${IMGID}"
+    #export IMAGENAME="idn/$PROJSHORT"  # [a-z_0-9] you may want to add an image id and/or staging tag
+    export IMAGENAME="idn/${PROJSHORT}${IMGID}"
     export CONTAINERNAME="${IMGID}$PROJSHORT"
     export DOCKER_REGISTRY=''  # empty for docker.io
     if [[ $JENKINS_HOME ]]; then
