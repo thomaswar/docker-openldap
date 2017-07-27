@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                 echo 'hard coding git branch - TODO: move this to the jenkins git plugin'
-                git checkout master
+                #git checkout master
                 echo 'pulling updates'
                 git pull
                 git submodule update --init
