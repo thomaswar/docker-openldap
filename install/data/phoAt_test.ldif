@@ -6,7 +6,6 @@ objectClass: idnSyncstat
 cn: test.user1234567
 givenName: Test
 sn: User
-nspmDistributionPassword: xxxxxxxxx
 phonlineSchulkennzahl: 101036
 phonlineSapPersnr: 4711
 phonlineBPK: j/NxdRQhp+tNyE9WhHdBSYuy3hA=
