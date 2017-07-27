@@ -52,7 +52,7 @@ objectClass ( 1.3.6.1.4.1.50035.1466.1.1
     NAME 'phonlinePerson'
  	AUXILIARY
 	MAY (
-        nspmDistributionPassword       $
+        idnDistributionPassword        $
         phonlineAccStBediensteter      $
         phonlineAccStStudent           $
         phonlineAccStWeiterbildung     $
