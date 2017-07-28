@@ -16,6 +16,9 @@ Using the dscripts project this container provides some docker convenience for t
 
 ## Usage
 
+The project provides a couple of custom schemas as exampple. You may select one and run the
+related init, load and test scripts.
+
 ### Setup
 
     dscripts/run.sh -ir /tests/init_sample_config_xxx.sh    # initialize sample xxx configuration, set root-pw
