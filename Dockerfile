@@ -47,8 +47,7 @@ RUN mkdir -p /var/log/openldap \
  && chown -R ldap:root /etc/openldap /var/db /var/log/openldap /opt/sample_data \
  && chmod 664 $(find   /etc/openldap /var/db /var/log/openldap -type f) \
  && chmod 777 $(find   /etc/openldap /var/db /var/log/openldap -type d)
-VOLUME /var/db/ \
-       /var/log/openldap
+VOLUME /var/db/
 
 EXPOSE 8389
 
