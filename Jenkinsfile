@@ -79,6 +79,9 @@ pipeline {
             }
         }
         stage('Push to Registry') {
+            when {
+                environment name: ${env.has_docker_repo}, value: 'true'
+            }
             steps {
                 sh '''
                 ./dscripts/manage.sh push
