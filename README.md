@@ -42,4 +42,3 @@ default ldap uid/gid configured at build time.
 ## Cluster Configuration
 
 See link:docs/cluster.adoc
- 
