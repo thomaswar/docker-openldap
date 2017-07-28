@@ -1,15 +1,11 @@
 pipeline {
     agent any
-    environment {
-        http_proxy='http://proxy.lfrz.at:8080'
-        https_proxy='http://proxy.lfrz.at:8080'
-        no_proxy='127.0.0.1, localhost, *.vie01.local'
-    }
     stages {
         stage('Git pull + branch + submodule') {
             steps {
                 sh '''
-                printenv | grep proxy
+                http_proxy=${env.http_proxy}
+                https_proxy=${env.https_proxy}
                 #echo 'pulling updates'
                 #git pull
                 git submodule update --init
@@ -27,6 +23,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                http_proxy=${env.http_proxy}
+                https_proxy=${env.https_proxy}
                 echo 'Building ..'
                 rm conf.sh 2> /dev/null || true
                 ln -s conf.sh.default conf.sh
