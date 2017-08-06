@@ -15,11 +15,33 @@ RUN useradd --gid $GID --uid $UID ldap \
 RUN yum -y update \
  && yum -y install epel-release \
  && yum -y install curl iproute lsof net-tools \
- && yum -y install python34-devel \
+ && yum -y install python34-devel bzip2 \
  && curl https://bootstrap.pypa.io/get-pip.py | python3.4 \
  && pip3 install ldap3 \
- && yum -y install openldap openldap-servers openldap-clients \
  && yum clean all
+
+#--------
+# source installing from the redhat source packet
+# just to hook in a linked list.
+# but we want:
+# - a nice packaging for our lib, so we need to compile
+# that. But ...
+# - RH doesn't want us to use their {%dist) marker,
+# so the result is binary, but not policy compatible.
+# - RH versions of openldap are quite anicent, in case
+# of bugfixes we'll most probably just drop in newer sources
+COPY install/build/compare-openldap-overlay.tar.bz2 /
+RUN tar -xjf compare-openldap-overlay.tar.bz2
+RUN bash /compare-openldap-overlay/rhel7-docker/0_packages.sh
+RUN bash /compare-openldap-overlay/rhel7-docker/1_prepare_env.sh 
+RUN pushd /compare-openldap-overlay/rhel7-docker/ && pwd && ls -la ${HOME} && bash /compare-openldap-overlay/rhel7-docker/2_prepare_build.sh
+RUN rpmbuild -ba /root/rpmbuild/SPECS/openldap.spec
+RUN yum -y localinstall root/rpmbuild/RPMS/x86_64/openldap-2.4*.rpm
+RUN yum -y localinstall root/rpmbuild/RPMS/x86_64/openldap-servers*.rpm
+RUN yum -y localinstall root/rpmbuild/RPMS/x86_64/openldap-ov-compare*.rpm
+RUN yum -y localinstall root/rpmbuild/RPMS/x86_64/openldap-clients*.rpm
+# No real cleanup afterwards. TODO ...Just a few MBs anyway
+#---
 
 # save system default ldap config and extend it with project-specific files
 RUN mkdir -p /opt/sample_data/etc/openldap/data/
